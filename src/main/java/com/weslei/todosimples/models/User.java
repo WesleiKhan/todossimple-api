@@ -52,7 +52,7 @@ public class User {
 
     public User() {}
 
-    public User(long id, String username, String password) {
+    public User(Long id, String username, String password) {
 
         this.id = id;
         this.username = username;
