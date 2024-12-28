@@ -2,6 +2,8 @@ package com.weslei.todosimples.models;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
+    @JsonIgnore
     private User user;
 
     @NotEmpty

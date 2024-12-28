@@ -54,7 +54,7 @@ public class UserControllers {
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/Edit_User/{id}")
     @Validated(UpdateUser.class)
     public ResponseEntity<Void> update(@Valid @RequestBody User obj, @PathVariable Long id) {
 
@@ -65,7 +65,7 @@ public class UserControllers {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/Delete_User/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
         this.userServices.delete(id);
