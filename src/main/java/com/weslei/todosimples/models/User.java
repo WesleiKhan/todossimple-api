@@ -30,7 +30,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
-    private long id;
+    private Long id;
 
     @Column(name = "username", length = 50, nullable = false, unique = true)
     @NotNull(groups = CreateUser.class)
@@ -65,7 +65,7 @@ public class User {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
 
         this.id = id;
     }
