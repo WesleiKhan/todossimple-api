@@ -24,10 +24,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
-
-
-
-
 @RestController
 @RequestMapping("/task")
 @Validated
@@ -44,7 +40,7 @@ public class TaskControllers {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping("/tasks_user/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<List<Task>> findAllByUserId(@PathVariable Long id) {
 
         List<Task> objs = this.taskServices.findAllByUserId(id);
