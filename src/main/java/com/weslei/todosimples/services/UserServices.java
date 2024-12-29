@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.weslei.todosimples.models.User;
 import com.weslei.todosimples.repositories.UserRepository;
+import com.weslei.todosimples.services.exceptions.DataBindingViolationException;
+import com.weslei.todosimples.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class UserServices {
@@ -20,7 +22,7 @@ public class UserServices {
 
         Optional<User> user = this.userRepository.findById(id);
 
-        return user.orElseThrow(() -> new RuntimeException(
+        return user.orElseThrow(() -> new ObjectNotFoundException(
 
         "Usuario não foi encontrado! Id: " + id + ", Tipo: " + User.class.getName() 
         ));
@@ -56,7 +58,7 @@ public class UserServices {
 
         } catch (Exception e) {
 
-            throw new RuntimeException("Não e possivel excluir usuario que tem relacionamentos com outras intidades");
+            throw new DataBindingViolationException("Não e possivel excluir usuario que tem relacionamentos com outras intidades");
         }
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.weslei.todosimples.models.Task;
 import com.weslei.todosimples.models.User;
 import com.weslei.todosimples.repositories.TaskRepository;
+import com.weslei.todosimples.services.exceptions.DataBindingViolationException;
+import com.weslei.todosimples.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TaskServices {
@@ -25,7 +27,7 @@ public class TaskServices {
 
         Optional<Task> task = this.taskRepository.findById(id);
 
-        return task.orElseThrow(() -> new RuntimeException(
+        return task.orElseThrow(() -> new ObjectNotFoundException(
             "Tarafe não foi encontrada! Id: " + id + ", Tipo: " + Task.class.getName()
         ));
     }
@@ -71,7 +73,7 @@ public class TaskServices {
             this.taskRepository.deleteById(id);
 
         } catch (Exception e) {
-            throw new RuntimeException("Erro interno." + e);
+            throw new DataBindingViolationException("Erro interno." + e);
         }
     }
     
